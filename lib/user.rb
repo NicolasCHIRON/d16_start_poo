@@ -12,12 +12,13 @@ class User
     return @@users_id
   end
 
-  def self.find_by_email(email)
-    where("email = ?", params["user"]["email"]).first
+  def self.find_by_email(email_to_find)
+    @@users_id.each do |user|
+      if user.email == email_to_find
+        return "Voici l'age du User trouvé : #{user.age}"
+      end
+    end
+    puts "Nous n'avons pas trouvé de correspondance !"
   end
 
 end
-
-
-# vérifier si un mail correspondant à une entrée dans le tableau
-# si oui faire correspondre le mail à l'utilisateur concerné
